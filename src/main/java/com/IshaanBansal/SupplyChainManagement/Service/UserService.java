@@ -38,6 +38,8 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+
     public User getUserByEmail(String email){
         return userRepository.findByEmail(email);
     }

@@ -1,8 +1,10 @@
 package com.IshaanBansal.SupplyChainManagement.Controller;
 
 
+import com.IshaanBansal.SupplyChainManagement.Dto.AuthRequest;
 import com.IshaanBansal.SupplyChainManagement.Model.User;
 import com.IshaanBansal.SupplyChainManagement.Service.UserService;
+import com.IshaanBansal.SupplyChainManagement.Util.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,20 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
     Logger log= LoggerFactory.getLogger(UserController.class);
+
+    @PostMapping
+    public String login(@RequestBody AuthRequest authRequest)throws Exception{
+        String email= authRequest.getEmail();
+        String password= authRequest.getPassword();
+        String token= jwtUtil.generateToken(email,password);
+        if(jwtUtil.isTokenValid(token))return token;
+        else throw new Exception("Token Invalid");
+
+    }
 
 
     @PostMapping("/registerUser")
@@ -46,6 +61,9 @@ public class UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
+
+
+
     @GetMapping("/getUserByEmail")
     public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email){
         User user=userService.getUserByEmail(email);
