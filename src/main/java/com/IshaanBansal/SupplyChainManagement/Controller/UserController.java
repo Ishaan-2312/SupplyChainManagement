@@ -25,7 +25,7 @@ public class UserController {
     private JwtUtil jwtUtil;
     Logger log= LoggerFactory.getLogger(UserController.class);
 
-    @PostMapping
+    @PostMapping("/login")
     public String login(@RequestBody AuthRequest authRequest)throws Exception{
         String email= authRequest.getEmail();
         String password= authRequest.getPassword();
