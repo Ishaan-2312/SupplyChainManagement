@@ -46,7 +46,7 @@ public class Web3jService {
     private String contractAddress;
 
     //    @Value("${ethereum.privateKey}")
-    private String privateKey="3843be5dcfe61ece0a43b244fd4f42c6e2ca2abdb9a0f1820f666bb97ebcd273";
+    private String privateKey="";
 
     public Web3jService() {
         String infuraUrl = "https://sepolia.infura.io/v3/3a699b648b924eaf8f0263bbb862578e";
