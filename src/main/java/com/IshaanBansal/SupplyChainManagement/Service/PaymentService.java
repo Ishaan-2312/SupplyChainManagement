@@ -21,9 +21,9 @@ public class PaymentService {
     private final RazorpayClient razorpay;
     private final Web3jPaymentService web3jPaymentService;
 
-    private String razorpayKeyId="rzp_test_xgz9aDl9YkIYBO";
+    private String razorpayKeyId="";
 
-    private String razorpayKeySecret="3fTxATVwIe8smK30543Q9adZ";
+    private String razorpayKeySecret="";
 
 
     public PaymentService(Web3jPaymentService web3jPaymentService) throws RazorpayException {
